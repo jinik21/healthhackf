@@ -134,7 +134,7 @@ class LandingPage extends React.Component {
           </div>
           <div className="text-center p-3" style={{ backgroundColor: "rgba(0, 0, 0, 0.2)" }}>
             © 2021 Copyright:
-            <a className="text-white" href="https://shrink4shrink.netlify.app/">shrink4shrink</a>
+            <a className="text-white" href="https://shrink4shrink.eu-gb.cf.appdomain.cloud//">shrink4shrink</a>
           </div>
         </footer>
 
