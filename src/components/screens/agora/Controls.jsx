@@ -41,28 +41,23 @@ const Controls = ({
 
   const endSession = async () => {
     generateReport();
-    let data = await fetch(
-      `https://shrink4shrink.herokuapp.com/api/close_session`,
-      {
-        method: "post",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          email: JSON.parse(localStorage.getItem("user")).email,
-          id: sessionId,
-        }),
-      }
-    );
-    data = await data.json();
-    console.log(data);
+    await fetch(`https://shrink4shrink.herokuapp.com/api/close_session`, {
+      method: "post",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        email: JSON.parse(localStorage.getItem("user")).email,
+        id: sessionId,
+      }),
+    });
     await client.leave();
     client.removeAllListeners();
     // we close the tracks to perform cleanup
     tracks[0].close();
     tracks[1].close();
-    setStart(false);
-    setInCall(false);
+    // setStart(false);
+    // setInCall(false);
     if (JSON.parse(localStorage.getItem("user")).doctor) {
       history.push(`/doctor-feedback/${sessionId}`);
     } else {
