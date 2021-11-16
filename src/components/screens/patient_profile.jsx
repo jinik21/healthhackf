@@ -25,7 +25,8 @@ class PatientProfile extends React.Component{
        .then((resp) => {
            console.log(resp);
            this.setState({
-           personal_data: resp
+           personal_data: resp,
+           routines:resp.routines
            });
        });
 
