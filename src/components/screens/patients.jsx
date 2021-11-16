@@ -12,7 +12,7 @@ class Patients extends React.Component {
     };
   }
   componentDidMount=()=>{
-    fetch("https://shrink4shrink.herokuapp.com/api/get_patient",{
+    fetch("https://shrink4shrinkbackend.eu-gb.cf.appdomain.cloud/api/get_patient",{
             method:"post",
             headers: { "Content-type": "application/json" },
             body: JSON.stringify({

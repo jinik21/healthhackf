@@ -53,7 +53,7 @@ class AddPresc extends React.Component {
         this.setState({
           data: res,
         });
-        fetch("https://shrink4shrink.herokuapp.com/api/add_presciption",{
+        fetch("https://shrink4shrinkbackend.eu-gb.cf.appdomain.cloud/api/add_presciption",{
       method:"post",
       headers: { "Content-type": "application/json" },
       body: JSON.stringify({

@@ -64,7 +64,7 @@ class Routines extends React.Component {
         day = '0' + day;
       this.setState({date:[year, month, day].join('-')});
       console.log(this.state.date);
-      fetch("https://shrink4shrink.herokuapp.com/api/add_routine",{
+      fetch("https://shrink4shrinkbackend.eu-gb.cf.appdomain.cloud/api/add_routine",{
             method:"post",
             headers: { "Content-type": "application/json" },
             body: JSON.stringify({
@@ -84,7 +84,7 @@ class Routines extends React.Component {
     }
   };
   componentDidMount=()=>{
-    fetch("https://shrink4shrink.herokuapp.com/api/get_routine",{
+    fetch("https://shrink4shrinkbackend.eu-gb.cf.appdomain.cloud/api/get_routine",{
             method:"post",
             headers: { "Content-type": "application/json" },
             body: JSON.stringify({

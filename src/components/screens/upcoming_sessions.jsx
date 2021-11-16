@@ -18,7 +18,7 @@ class UpcomingSessions extends React.Component {
   }
   componentDidMount=()=>{
     if(this.state.u.doctor){
-      fetch("https://shrink4shrink.herokuapp.com/api/usersessions",{
+      fetch("https://shrink4shrinkbackend.eu-gb.cf.appdomain.cloud/api/usersessions",{
             method:"post",
             headers: { "Content-type": "application/json" },
             body: JSON.stringify({
@@ -36,7 +36,7 @@ class UpcomingSessions extends React.Component {
     });
     }
         else{
-          fetch("https://shrink4shrink.herokuapp.com/api/usersessions",{
+          fetch("https://shrink4shrinkbackend.eu-gb.cf.appdomain.cloud/api/usersessions",{
             method:"post",
             headers: { "Content-type": "application/json" },
             body: JSON.stringify({

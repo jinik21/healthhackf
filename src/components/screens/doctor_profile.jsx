@@ -13,7 +13,7 @@ class DoctorProfile extends React.Component {
     componentDidMount = () => {
         console.log(this.props.match.params.name);
         const email = this.props.match.params.name;
-        fetch("https://shrink4shrink.herokuapp.com/api/userdata", {
+        fetch("https://shrink4shrinkbackend.eu-gb.cf.appdomain.cloud/api/userdata", {
             method: "post",
             headers: { "Content-type": "application/json" },
             body: JSON.stringify({
@@ -33,7 +33,7 @@ class DoctorProfile extends React.Component {
     fun = (e) => {
         console.log(this.state.u.email);
         console.log(e.target.title);
-        fetch("https://shrink4shrink.herokuapp.com/api/assign_doctor", {
+        fetch("https://shrink4shrinkbackend.eu-gb.cf.appdomain.cloud/api/assign_doctor", {
             method: "post",
             headers: { "Content-type": "application/json" },
             body: JSON.stringify({
@@ -45,7 +45,7 @@ class DoctorProfile extends React.Component {
             .then((resp) => {
                 console.log(resp);
             });
-            fetch("https://shrink4shrink.herokuapp.com/api/userdata", {
+            fetch("https://shrink4shrinkbackend.eu-gb.cf.appdomain.cloud/api/userdata", {
                 method: "post",
                 headers: { "Content-type": "application/json" },
                 body: JSON.stringify({

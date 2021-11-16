@@ -22,7 +22,7 @@ const Video = ({
   const [text, setText] = useState([""]);
   const [displayText, setDisplayText] = useState([""]);
   const client = useClient();
-  let endpoint = "https://shrink4shrink.herokuapp.com";
+  let endpoint = "https://shrink4shrinkbackend.eu-gb.cf.appdomain.cloud";
   // if (!process.env.NODE_ENV || process.env.NODE_ENV === "development") {
   //   endpoint = "http://localhost:3001";
   // }
@@ -114,7 +114,7 @@ const Video = ({
   }, [inCall]);
   const generateReport = async () => {
     console.log(text);
-    let data = await fetch(`https://shrink4shrink.herokuapp.com/api/summary`, {
+    let data = await fetch(`https://shrink4shrinkbackend.eu-gb.cf.appdomain.cloud/api/summary`, {
       method: "post",
       headers: {
         "Content-Type": "application/json",
@@ -141,7 +141,7 @@ const Video = ({
     }
     console.log(url);
     let response = await fetch(
-      "https://shrink4shrink.herokuapp.com/api/add_notes",
+      "https://shrink4shrinkbackend.eu-gb.cf.appdomain.cloud/api/add_notes",
       {
         method: "post",
         headers: {

@@ -20,7 +20,7 @@ class dashboarddoc extends React.Component {
     localStorage.removeItem("user");
   }
   componentDidMount = async () => {
-    fetch("https://shrink4shrink.herokuapp.com/api/usersessions", {
+    fetch("https://shrink4shrinkbackend.eu-gb.cf.appdomain.cloud/api/usersessions", {
       method: "post",
       headers: { "Content-type": "application/json" },
       body: JSON.stringify({
@@ -53,7 +53,7 @@ class dashboarddoc extends React.Component {
           latest: resp[ans],
         });
       });
-    fetch("https://shrink4shrink.herokuapp.com/api/usersessions", {
+    fetch("https://shrink4shrinkbackend.eu-gb.cf.appdomain.cloud/api/usersessions", {
       method: "post",
       headers: { "Content-type": "application/json" },
       body: JSON.stringify({

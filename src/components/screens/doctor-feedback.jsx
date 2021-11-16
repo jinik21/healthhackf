@@ -17,7 +17,7 @@ class DoctorFeedback extends React.Component {
     this.setState({ ...this.state, [e.target.name]: e.target.value });
   handleClick = async () => {
     let data = await fetch(
-      "https://shrink4shrink.herokuapp.com/api/doctor_feedback",
+      "https://shrink4shrinkbackend.eu-gb.cf.appdomain.cloud/api/doctor_feedback",
       {
         method: "post",
         headers: {

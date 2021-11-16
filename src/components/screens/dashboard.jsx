@@ -18,7 +18,7 @@ const Dashboard = (props) => {
   useEffect(() => {
     const func = async () => {
       let data = await fetch(
-        "https://shrink4shrink.herokuapp.com/api/usersessions",
+        "https://shrink4shrinkbackend.eu-gb.cf.appdomain.cloud/api/usersessions",
         {
           method: "post",
           headers: {
@@ -67,7 +67,7 @@ const Dashboard = (props) => {
     };
     const func1 = async () => {
       let data1 = await fetch(
-        "https://shrink4shrink.herokuapp.com/api/usersessions",
+        "https://shrink4shrinkbackend.eu-gb.cf.appdomain.cloud/api/usersessions",
         {
           method: "post",
           headers: {

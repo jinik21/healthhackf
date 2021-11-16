@@ -14,7 +14,7 @@ class PatientProfile extends React.Component{
     }
     componentDidMount=()=>{
         const email = this.props.match.params.name;
-        fetch("https://shrink4shrink.herokuapp.com/api/userdata",{
+        fetch("https://shrink4shrinkbackend.eu-gb.cf.appdomain.cloud/api/userdata",{
            method:"post",
            headers: { "Content-type": "application/json" },
            body: JSON.stringify({
@@ -30,7 +30,7 @@ class PatientProfile extends React.Component{
            });
        });
 
-       fetch("https://shrink4shrink.herokuapp.com/api/usersessions",{
+       fetch("https://shrink4shrinkbackend.eu-gb.cf.appdomain.cloud/api/usersessions",{
         method:"post",
         headers: { "Content-type": "application/json" },
         body: JSON.stringify({
@@ -46,7 +46,7 @@ class PatientProfile extends React.Component{
             previous_session: resp
             });
         });
-        fetch("https://shrink4shrink.herokuapp.com/api/usersessions",{
+        fetch("https://shrink4shrinkbackend.eu-gb.cf.appdomain.cloud/api/usersessions",{
             method:"post",
             headers: { "Content-type": "application/json" },
             body: JSON.stringify({
@@ -62,7 +62,7 @@ class PatientProfile extends React.Component{
                 upcoming_session: resp
                 });
             });
-        fetch("https://shrink4shrink.herokuapp.com/api/get_routine",{
+        fetch("https://shrink4shrinkbackend.eu-gb.cf.appdomain.cloud/api/get_routine",{
             method:"post",
             headers: { "Content-type": "application/json" },
             body: JSON.stringify({

@@ -31,7 +31,7 @@ class LoginPage extends React.Component {
   onSubmitSignIn = (event) => {
     console.log(this.state.data);
     event.preventDefault();
-    fetch("https://shrink4shrink.herokuapp.com/api/signin", {
+    fetch("https://shrink4shrinkbackend.eu-gb.cf.appdomain.cloud/api/signin", {
       method: "post",
       headers: { "Content-type": "application/json" },
       body: JSON.stringify({

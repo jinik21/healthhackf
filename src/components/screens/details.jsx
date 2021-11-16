@@ -19,7 +19,7 @@ class Details extends React.Component {
     console.log(this.props.match.params.sid);
     const sid1 = this.props.match.params.sid;
     await this.setState({ uemail: email, sid: sid1 });
-    fetch("https://shrink4shrink.herokuapp.com/api/session", {
+    fetch("https://shrink4shrinkbackend.eu-gb.cf.appdomain.cloud/api/session", {
       method: "post",
       headers: { "Content-type": "application/json" },
       body: JSON.stringify({

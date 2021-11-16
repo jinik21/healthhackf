@@ -60,7 +60,7 @@ class RegisterPage extends React.Component {
           this.state.data.email
         )
       ) {
-        fetch("https://shrink4shrink.herokuapp.com/api/signup", {
+        fetch("https://shrink4shrinkbackend.eu-gb.cf.appdomain.cloud/api/signup", {
           method: "post",
           headers: { "Content-type": "application/json" },
           body: JSON.stringify({

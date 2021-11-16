@@ -15,7 +15,7 @@ class FindDoctor extends React.Component {
   }
   componentDidMount=()=>{
     console.log(this.state.u)
-    fetch("https://shrink4shrink.herokuapp.com/api/get_doctors",{
+    fetch("https://shrink4shrinkbackend.eu-gb.cf.appdomain.cloud/api/get_doctors",{
       method:"post",
       headers: { "Content-type": "application/json" },
       body: JSON.stringify({

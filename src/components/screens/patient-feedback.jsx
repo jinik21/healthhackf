@@ -16,7 +16,7 @@ class PatientFeedback extends React.Component {
   handleClick = async () => {
     console.log(this.props.match.params.sessionId);
     let data = await fetch(
-      "https://shrink4shrink.herokuapp.com/api/patient_feedback",
+      "https://shrink4shrinkbackend.eu-gb.cf.appdomain.cloud/api/patient_feedback",
       {
         method: "post",
         headers: {
