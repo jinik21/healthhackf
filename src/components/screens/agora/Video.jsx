@@ -39,7 +39,7 @@ const Video = ({
           });
           console.log(users);
         }
-        if (mediaType === "audio") {
+        if (mediaType === "audio" && user) {
           user.audioTrack?.play();
         }
       });
@@ -159,7 +159,7 @@ const Video = ({
   };
   return (
     <div>
-      {tracks && (
+      {inCall && tracks && (
         <AgoraVideoPlayer
           videoTrack={tracks[1]}
           style={{
