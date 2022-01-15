@@ -19,10 +19,42 @@ const Video = ({
 }) => {
   const [users, setUsers] = useState([]);
   const [, setStart] = useState(false);
-  const [text, setText] = useState([""]);
+  const [text, setText] = useState("");
   const [displayText, setDisplayText] = useState([""]);
   const client = useClient();
   let endpoint = "http://localhost:3001";
+
+  var SpeechRecognition = window.webkitSpeechRecognition || window.speechRecognition;
+var recognition = new SpeechRecognition();
+recognition.interimResults = false
+
+useEffect(() => {
+  recognition.start()
+},[]);
+
+var transContent = "";
+var noteContent = "";
+recognition.continuous = true;
+// RTM Global Vars
+var isLoggedIn = false;
+
+recognition.onresult = function (event) {
+  var current = event.resultIndex;
+  var transcript = event.results[current][0].transcript;
+  setText(transcript)
+  // noteContent = noteContent + transcript + "<br>";
+  // $("#note-text").append("<b><i>You said: </i></b> " + noteContent);
+  // noteContent = '';
+};
+
+recognition.onerror = function (event) {
+  if (event.error === 'no-speech') {
+    console.log('Could you please repeat? I didn\'t get what you\'re saying.');
+    recognition.stop();
+    recognition.start();
+  }
+}
+
   // if (!process.env.NODE_ENV || process.env.NODE_ENV === "development") {
   //   endpoint = "http://localhost:3001";
   // }
@@ -42,6 +74,7 @@ const Video = ({
         if (mediaType === "audio" && user) {
           user.audioTrack?.play();
         }
+        recognition.start();
       });
 
       client.on("user-unpublished", (user, type) => {
@@ -72,46 +105,7 @@ const Video = ({
       init(channelName);
     }
   }, [channelName, ready, tracks, client, appId, token, users]);
-  useEffect(() => {
-    const s2t = () => {
-      fetch(`${endpoint}/api/speech-to-text/token`)
-        .then((response) => response.json())
-        .then((token) => {
-          console.log(token);
-          var stream = recognizeMic({
-            accessToken: token.accessToken,
-            url: token.url,
-            objectMode: true, // send objects instead of text
-            extractResults: true, // convert {results: [{alternatives:[...]}], result_index: 0} to {alternatives: [...], index: 0}
-            format: false, // optional - performs basic formatting on the results such as capitals an periods
-          });
-          console.log(stream);
-          /**
-           * Prints the users speech to the console
-           * and assigns the text to the state.
-           */
-          stream.on("data", (data) => {
-            if (data.final && data.alternatives[0].confidence > 0.5) {
-              setText((prev) => {
-                return [...prev, data.alternatives[0].transcript];
-              });
-              setDisplayText((prev) => {
-                return [...prev, data.alternatives[0].transcript];
-              });
-            }
-            console.log(data);
-          });
-          stream.on("error", function (err) {
-            console.log(err);
-          });
-        })
-        .catch(function (error) {
-          console.log(error);
-        });
-    };
-    s2t();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [inCall]);
+  
   const generateReport = async () => {
     console.log(text);
     let data = await fetch(`http://localhost:3001/api/summary`, {
@@ -179,7 +173,7 @@ const Video = ({
               client={client}
               sessionId={sessionId}
               history={history}
-              generateReport={generateReport}
+              // generateReport={generateReport}
             />
           )}
           {users.length > 0 &&
@@ -212,10 +206,10 @@ const Video = ({
           backgroundColor: "#000",
         }}
       >
-        <p style={{ color: "#fff" }}>{displayText.splice(-1, 10).join(" ")}</p>
+        {/* <p style={{ color: "#fff" }}>{displayText.splice(-1, 10).join(" ")}</p> */}
       </div>
       <button
-        onClick={generateReport}
+        // onClick={generateReport}
         style={{ marginTop: 20 }}
         type="button"
         class="btn btn-success"
