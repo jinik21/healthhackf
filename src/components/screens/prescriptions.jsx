@@ -16,7 +16,7 @@ class Prescriptions extends React.Component {
     localStorage.removeItem("user");
   }
   componentDidMount=()=>{
-    fetch("https://shrink4shrinkbackend.eu-gb.cf.appdomain.cloud/api/usersessions",{
+    fetch("http://localhost:3001/api/usersessions",{
             method:"post",
             headers: { "Content-type": "application/json" },
             body: JSON.stringify({

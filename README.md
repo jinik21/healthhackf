@@ -55,9 +55,9 @@ In the session(video call) , using IBM speech to text and summarizer API, platfo
 
 
 ## Live Demo at:
-- https://shrink4shrink.eu-gb.cf.appdomain.cloud/ (Frontend)
-- https://shrink4shrinkbackend.eu-gb.cf.appdomain.cloud/ (Backend)
+- https://shrink4shrinklocalhost:3001/ (Frontend)
+- https://localhost:3001/ (Backend)
 
 ## Our Repositories:
 - https://github.com/jinik21/shrink4shrink
-- https://github.com/jinik21/shrink4shrinkbackend
+- https://github.com/jinik21/

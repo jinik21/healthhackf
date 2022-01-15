@@ -31,7 +31,7 @@ class LoginPage extends React.Component {
   onSubmitSignIn = (event) => {
     console.log(this.state.data);
     event.preventDefault();
-    fetch("https://shrink4shrinkbackend.eu-gb.cf.appdomain.cloud/api/signin", {
+    fetch("http://localhost:3001/api/signin", {
       method: "post",
       headers: { "Content-type": "application/json" },
       body: JSON.stringify({
@@ -66,7 +66,7 @@ class LoginPage extends React.Component {
                   <div className="row g-0">
                     <div className="col-xl-6 d-none d-xl-block">
                       <img
-                        src="https://mdbootstrap.com/img/Photos/new-templates/bootstrap-registration/img4.jpg"
+                        src="http://mdbootstrap.com/img/Photos/new-templates/bootstrap-registration/img4.jpg"
                         alt="img"
                         className="img-fluid"
                         style={{

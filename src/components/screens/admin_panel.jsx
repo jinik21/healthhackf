@@ -9,7 +9,7 @@ class AdminPanel extends React.Component{
       }
     }
     componentDidMount=()=>{
-      fetch("https://shrink4shrinkbackend.eu-gb.cf.appdomain.cloud/api/adminpaneldata",{
+      fetch("https://localhost:3001/api/adminpaneldata",{
            method:"get",
            headers: { "Content-type": "application/json" },
        })

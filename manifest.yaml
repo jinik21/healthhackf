@@ -4,4 +4,4 @@ memory: 128M
 path: build/
 buildpack: staticfile_buildpack 
 routes:
-  - route: shrink4shrink.eu-gb.cf.appdomain.cloud
+  - route: shrink4shrinklocalhost:3001

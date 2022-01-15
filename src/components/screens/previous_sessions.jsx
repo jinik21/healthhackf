@@ -17,7 +17,7 @@ class PreviousSessions extends React.Component {
   }
   componentDidMount = () => {
     if (this.state.u.doctor) {
-      fetch("https://shrink4shrinkbackend.eu-gb.cf.appdomain.cloud/api/usersessions", {
+      fetch("http://localhost:3001/api/usersessions", {
         method: "post",
         headers: { "Content-type": "application/json" },
         body: JSON.stringify({
@@ -34,7 +34,7 @@ class PreviousSessions extends React.Component {
           });
         });
     } else {
-      fetch("https://shrink4shrinkbackend.eu-gb.cf.appdomain.cloud/api/usersessions", {
+      fetch("http://localhost:3001/api/usersessions", {
         method: "post",
         headers: { "Content-type": "application/json" },
         body: JSON.stringify({

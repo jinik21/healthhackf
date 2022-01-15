@@ -41,7 +41,7 @@ const Controls = ({
 
   const endSession = async () => {
     generateReport();
-    await fetch(`https://shrink4shrinkbackend.eu-gb.cf.appdomain.cloud/api/close_session`, {
+    await fetch(`http://localhost:3001/api/close_session`, {
       method: "post",
       headers: {
         "Content-Type": "application/json",
