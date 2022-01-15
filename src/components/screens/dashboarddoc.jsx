@@ -1,8 +1,9 @@
 /* eslint-disable jsx-a11y/role-supports-aria-props */
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React from "react";
-import { Link } from "react-router-dom";
 import "./dashboard.css";
+import Navbar from "./navbar";
+import Sidebar from "./sidebar"
 
 class dashboarddoc extends React.Component {
   constructor(props) {
@@ -76,63 +77,10 @@ class dashboarddoc extends React.Component {
   render() {
     return (
       <div>
-        <nav className="navbar navbar-dark bg-dark">
-          <div className="container-fluid">
-            <a className="navbar-brand" href="/">
-              s4s
-            </a>
-            <form className="d-flex">
-              <Link
-                className="button btn btn-outline-success me-2"
-                onClick={this.handleSignOut}
-                to="/"
-              >
-                Logout
-              </Link>
-            </form>
-          </div>
-        </nav>
-        <div className="container-fluid" id="main">
+        <Navbar />
+        <div className="container-fluid" id="main" >
           <div className="row row-offcanvas row-offcanvas-left">
-            <div
-              className="col-md-3 col-lg-2 sidebar-offcanvas pl-0"
-              id="sidebar"
-              role="navigation"
-              style={{ backgroundColor: "#171010" }}
-            >
-              <ul className="nav flex-column sticky-top pl-0 pt-5 mt-3">
-                <li className="nav-item">
-                  <a className="nav-link text-light" href="/dashboarddoc">
-                    Homepage
-                  </a>
-                </li>
-                <li className="nav-item">
-                  <a className="nav-link text-light" href="/upcoming-sessions">
-                    Upcoming Sessions
-                  </a>
-                </li>
-                <li className="nav-item">
-                  <a className="nav-link text-light" href="/previous-sessions">
-                    Previous Sessions
-                  </a>
-                </li>
-                <li className="nav-item">
-                  <a className="nav-link text-light" href="/patients">
-                    Patients
-                  </a>
-                </li>
-                <li className="nav-item">
-                  <a className="nav-link text-light" href="/pending-session">
-                    Pending Sessions
-                  </a>
-                </li>
-                <li className="nav-item">
-                  <a className="nav-link text-light" href="/user-profile">
-                    Profile
-                  </a> 
-                </li>
-              </ul>
-            </div>
+            <Sidebar />
 
             <div className="col main pt-5 mt-3">
               <h1 className="display-4 d-none d-sm-block">
@@ -159,8 +107,8 @@ class dashboarddoc extends React.Component {
               </div>
               <div className="row mb-3">
                 <div className="col-xl-3 col-sm-6 py-2">
-                  <div className="card bg-success text-white h-100">
-                    <div className="card-body bg-success">
+                  <div className="card text-white h-100" >
+                    <div className="card-body" style={{backgroundColor:"#396EB0"}}>
                       <div className="rotate">
                         <i className="fa fa-user fa-4x"></i>
                       </div>
@@ -173,8 +121,8 @@ class dashboarddoc extends React.Component {
                   </div>
                 </div>
                 <div className="col-xl-3 col-sm-6 py-2">
-                  <div className="card bg-success text-white h-100">
-                    <div className="card-body bg-success">
+                  <div className="card text-white h-100">
+                    <div className="card-body" style={{backgroundColor:"#396EB0"}}>
                       <div className="rotate">
                         <i className="fa fa-user fa-4x"></i>
                       </div>
@@ -186,8 +134,8 @@ class dashboarddoc extends React.Component {
                   </div>
                 </div>
                 <div className="col-xl-3 col-sm-6 py-2">
-                  <div className="card bg-success text-white h-100">
-                    <div className="card-body bg-success">
+                  <div className="card text-white h-100">
+                    <div className="card-body" style={{backgroundColor:"#396EB0"}}>
                       <div className="rotate">
                         <i className="fa fa-user fa-4x"></i>
                       </div>
@@ -201,7 +149,7 @@ class dashboarddoc extends React.Component {
               </div>
               <div className="row">
                 <div className="col-sm-6">
-                  <div className="ses-info">
+                  <div className="ses-info" >
                     <h1>Previous Sessions</h1>
                     <p>{this.state.last && this.state.last.title}</p>
                     <p>Date: {this.state.last && this.state.last.date}</p>
