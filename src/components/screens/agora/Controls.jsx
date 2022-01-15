@@ -11,7 +11,7 @@ const Controls = ({
   client,
   sessionId,
   history,
-  generateReport,
+  // generateReport,
 }) => {
   const [trackState, setTrackState] = useState({ video: true, audio: true });
   const mute = async (type) => {
@@ -40,7 +40,7 @@ const Controls = ({
   // };
 
   const endSession = async () => {
-    generateReport();
+    // generateReport();
     await fetch(`http://localhost:3001/api/close_session`, {
       method: "post",
       headers: {

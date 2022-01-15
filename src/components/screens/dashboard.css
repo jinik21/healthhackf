@@ -3,6 +3,11 @@ html {
     height: 100%;
 }
 
+.navBar{
+    color: '#344CB7';
+    background-color: '#344CB7';
+}
+
 /*
  * Off Canvas sidebar at medium breakpoint
  * --------------------------------------------------
