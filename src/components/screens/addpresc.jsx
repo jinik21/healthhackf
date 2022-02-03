@@ -164,7 +164,33 @@ class AddPresc extends React.Component {
                           </button>
                   </div>
                 </div>
-              </div>
+               </div>
+                        <div className="row">
+                            <h1>List View</h1>
+                        </div>
+                        <div className="row">
+                            <div className="col-md-6 mb-4" style={{ width: "30%", justifyContent: "center" }}>
+                                <div class="mb-3">
+                                    <input type="text" id="disabledTextInput" class="form-control" placeholder="Medicine Name" disabled/>
+                                 </div>
+                            </div>
+                            <div className="col-md-6 mb-4" style={{ width: "20%" }}>
+                                <div class="mb-3">
+                                    <input type="text" id="disabledTextInput" class="form-control" placeholder="Dosage" disabled />
+                                </div>
+                            </div>
+                            <div className="col-md-6 mb-4" style={{ width: "20%" }}>
+                                <div class="mb-3">
+                                    <input type="text" id="disabledTextInput" class="form-control" placeholder="Days" disabled />
+                                </div>
+                            </div>
+                            <div className="col-md-6 mb-4" style={{ width: "20%" }}>
+                                <div class="mb-3">
+                                    <input type="text" id="disabledTextInput" class="form-control" placeholder="Times per Day" disabled />
+                                </div>
+                            </div>
+                        </div>
+
             </div>
           </div>
         </div>
