@@ -2,6 +2,9 @@ import { AgoraVideoPlayer } from "agora-rtc-react";
 import React, { useEffect, useState } from "react";
 import firebase from "../../../firebase";
 import Controls from "./Controls";
+import AgoraRTM from "agora-rtm-sdk";
+import useAgoraRtm from "./useAgoraRtm";
+const clientRTM = AgoraRTM.createInstance("370cc8b63bac46d381f17915984b033d");
 
 const storageRef = firebase.storage().ref();
 
@@ -21,39 +24,38 @@ const Video = ({
   const [text, setText] = useState("");
   const [displayText, setDisplayText] = useState([""]);
   const client = useClient();
+  const { message, sendMessage } = useAgoraRtm(
+    channelName,
+    sessionId,
+    clientRTM
+  );
 
   var SpeechRecognition =
     window.webkitSpeechRecognition || window.speechRecognition;
   var recognition = new SpeechRecognition();
   recognition.interimResults = false;
+  recognition.continuous = true;
+  // RTM Global Vars
+
+  const { ready, tracks } = useMicrophoneAndCameraTracks();
 
   useEffect(() => {
     recognition.start();
+    recognition.onresult = function (event) {
+      var current = event.resultIndex;
+      var transcript = event.results[current][0].transcript;
+      // setText(transcript)
+      console.log(transcript);
+      setText((prev) => {
+        return [...prev, transcript];
+      });
+      setDisplayText((prev) => {
+        return [...prev, transcript];
+      });
+      sendMessage(transcript);
+    };
   }, []);
-  recognition.continuous = true;
-  // RTM Global Vars
-  recognition.onresult = function (event) {
-    var current = event.resultIndex;
-    var transcript = event.results[current][0].transcript;
-    // setText(transcript)
-    setText((prev) => {
-      return [...prev, transcript];
-    });
-    setDisplayText((prev) => {
-      return [...prev, transcript];
-    });
-  };
 
-  recognition.onerror = function (event) {
-    if (event.error === "no-speech") {
-      console.log("Could you please repeat? I didn't get what you're saying.");
-      recognition.stop();
-      recognition.start();
-    }
-  };
-
-  const { ready, tracks } = useMicrophoneAndCameraTracks();
-  // console.log(token);
   useEffect(() => {
     const init = async (name) => {
       client.on("user-published", async (user, mediaType) => {
@@ -68,7 +70,7 @@ const Video = ({
         if (mediaType === "audio" && user) {
           user.audioTrack?.play();
         }
-        recognition.start();
+        // recognition.start();
       });
 
       client.on("user-unpublished", (user, type) => {
@@ -190,13 +192,13 @@ const Video = ({
         style={{
           fontSize: "30px",
           position: "absolute",
-          bottom: "-1200%",
+          bottom: "10%",
           left: 0,
           marginLeft: "20px",
           backgroundColor: "#000",
         }}
       >
-        <p style={{ color: "#fff" }}>{displayText.splice(-1, 10).join(" ")}</p>
+        <p style={{ color: "#fff" }}>{message}</p>
       </div>
       <button
         onClick={generateReport}

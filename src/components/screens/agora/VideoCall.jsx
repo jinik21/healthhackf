@@ -11,6 +11,7 @@ const VideoCall = (props) => {
   const useMicrophoneAndCameraTracks = createMicrophoneAndCameraTracks();
   const [inCall, setInCall] = useState(false);
   const [token, setToken] = useState(null);
+
   useEffect(() => {
     const init = async () => {
       let data = await fetch(
