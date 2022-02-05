@@ -1,6 +1,5 @@
 import { AgoraVideoPlayer } from "agora-rtc-react";
 import React, { useEffect, useState } from "react";
-import recognizeMic from "watson-speech/speech-to-text/recognize-microphone";
 import firebase from "../../../firebase";
 import Controls from "./Controls";
 
@@ -22,44 +21,39 @@ const Video = ({
   const [text, setText] = useState("");
   const [displayText, setDisplayText] = useState([""]);
   const client = useClient();
-  let endpoint = "http://localhost:3001";
 
-  var SpeechRecognition = window.webkitSpeechRecognition || window.speechRecognition;
-var recognition = new SpeechRecognition();
-recognition.interimResults = false
+  var SpeechRecognition =
+    window.webkitSpeechRecognition || window.speechRecognition;
+  var recognition = new SpeechRecognition();
+  recognition.interimResults = false;
 
-useEffect(() => {
-  recognition.start()
-},[]);
-
-var transContent = "";
-var noteContent = "";
-recognition.continuous = true;
-// RTM Global Vars
-var isLoggedIn = false;
-
-recognition.onresult = function (event) {
-  var current = event.resultIndex;
-  var transcript = event.results[current][0].transcript;
-  setText(transcript)
-  // noteContent = noteContent + transcript + "<br>";
-  // $("#note-text").append("<b><i>You said: </i></b> " + noteContent);
-  // noteContent = '';
-};
-
-recognition.onerror = function (event) {
-  if (event.error === 'no-speech') {
-    console.log('Could you please repeat? I didn\'t get what you\'re saying.');
-    recognition.stop();
+  useEffect(() => {
     recognition.start();
-  }
-}
+  }, []);
+  recognition.continuous = true;
+  // RTM Global Vars
+  recognition.onresult = function (event) {
+    var current = event.resultIndex;
+    var transcript = event.results[current][0].transcript;
+    // setText(transcript)
+    setText((prev) => {
+      return [...prev, transcript];
+    });
+    setDisplayText((prev) => {
+      return [...prev, transcript];
+    });
+  };
 
-  // if (!process.env.NODE_ENV || process.env.NODE_ENV === "development") {
-  //   endpoint = "http://localhost:3001";
-  // }
+  recognition.onerror = function (event) {
+    if (event.error === "no-speech") {
+      console.log("Could you please repeat? I didn't get what you're saying.");
+      recognition.stop();
+      recognition.start();
+    }
+  };
+
   const { ready, tracks } = useMicrophoneAndCameraTracks();
-  console.log(token);
+  // console.log(token);
   useEffect(() => {
     const init = async (name) => {
       client.on("user-published", async (user, mediaType) => {
@@ -105,7 +99,6 @@ recognition.onerror = function (event) {
       init(channelName);
     }
   }, [channelName, ready, tracks, client, appId, token, users]);
-  
   const generateReport = async () => {
     console.log(text);
     let data = await fetch(`http://localhost:3001/api/summary`, {
@@ -114,12 +107,12 @@ recognition.onerror = function (event) {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        text: text.join(", "),
+        text: text.join(" "),
       }),
     });
     data = await data.json();
     console.log(data);
-    const file = new Blob([text], {
+    const file = new Blob([data], {
       type: "text/plain",
     });
     let url;
@@ -134,20 +127,17 @@ recognition.onerror = function (event) {
       console.log(e);
     }
     console.log(url);
-    let response = await fetch(
-      "http://localhost:3001/api/add_notes",
-      {
-        method: "post",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          email: JSON.parse(localStorage.getItem("user")).email,
-          id: sessionId,
-          notes: url,
-        }),
-      }
-    );
+    let response = await fetch("http://localhost:3001/api/add_notes", {
+      method: "post",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        email: JSON.parse(localStorage.getItem("user")).email,
+        id: sessionId,
+        notes: url,
+      }),
+    });
     response = response.json();
     console.log(response);
   };
@@ -173,7 +163,7 @@ recognition.onerror = function (event) {
               client={client}
               sessionId={sessionId}
               history={history}
-              // generateReport={generateReport}
+              generateReport={generateReport}
             />
           )}
           {users.length > 0 &&
@@ -200,16 +190,16 @@ recognition.onerror = function (event) {
         style={{
           fontSize: "30px",
           position: "absolute",
-          bottom: "10%",
+          bottom: "-1200%",
           left: 0,
           marginLeft: "20px",
           backgroundColor: "#000",
         }}
       >
-        {/* <p style={{ color: "#fff" }}>{displayText.splice(-1, 10).join(" ")}</p> */}
+        <p style={{ color: "#fff" }}>{displayText.splice(-1, 10).join(" ")}</p>
       </div>
       <button
-        // onClick={generateReport}
+        onClick={generateReport}
         style={{ marginTop: 20 }}
         type="button"
         class="btn btn-success"
