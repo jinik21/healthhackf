@@ -111,6 +111,9 @@ hr {
 #menu.navbar-default .navbar-nav > li > a:hover:after {
   width: 100%;
 }
+#menu.navbar {
+  background-color: aqua;
+}
 .navbar-default .navbar-nav > .active > a,
 .navbar-default .navbar-nav > .active > a:hover,
 .navbar-default .navbar-nav > .active > a:focus {
@@ -208,7 +211,7 @@ a:focus,
   display: table;
   width: 100%;
   padding: 0;
-  background: url(../img/intro-bg.jpg) center center no-repeat;
+  background: url(../img/landing_back.gif) center center no-repeat;
   background-color: #e5e5e5;
   -webkit-background-size: cover;
   -moz-background-size: cover;

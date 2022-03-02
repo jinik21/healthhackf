@@ -27,8 +27,8 @@ import Profile from "./components/screens/profile";
 import PatientProfile from "./components/screens/patient_profile";
 import Details from "./components/screens/details";
 import Chat from "./components/screens/chat";
-import PrivateRoute from './route/PrivateRoute';
-import landing2 from "./components/screens/landing2"
+import PrivateRoute from "./route/PrivateRoute";
+import landing2 from "./components/screens/landing2";
 
 function App() {
   return (
@@ -55,10 +55,18 @@ function App() {
         <PrivateRoute path="/find-doctor" exact component={FindDoctor} />
       </section>
       <section>
-        <PrivateRoute path="/upcoming-sessions" exact component={UpcomingSessions} />
+        <PrivateRoute
+          path="/upcoming-sessions"
+          exact
+          component={UpcomingSessions}
+        />
       </section>
       <section>
-        <PrivateRoute path="/previous-sessions" exact component={PreviousSessions} />
+        <PrivateRoute
+          path="/previous-sessions"
+          exact
+          component={PreviousSessions}
+        />
       </section>
       <section>
         <PrivateRoute path="/form" exact component={form} />
@@ -102,19 +110,27 @@ function App() {
         />
       </section>
       <section>
-        <PrivateRoute path="/pending-session" exact component={PendingSessions} />
+        <PrivateRoute
+          path="/pending-session"
+          exact
+          component={PendingSessions}
+        />
       </section>
       <section>
         <Route path="/admin-panel" exact component={AdminPanel} />
       </section>
       <section>
-        <PrivateRoute path="/user-profile" exact component={Profile}/>
+        <PrivateRoute path="/user-profile" exact component={Profile} />
       </section>
       <section>
-        <PrivateRoute path="/patient-profile/:name" exact component={PatientProfile}/>
+        <PrivateRoute
+          path="/patient-profile/:name"
+          exact
+          component={PatientProfile}
+        />
       </section>
       <section>
-        <PrivateRoute path="/chat" exact compontent ={Chat}/>
+        <PrivateRoute path="/chat" exact compontent={Chat} />
       </section>
     </div>
   );

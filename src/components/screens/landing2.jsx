@@ -1,7 +1,7 @@
 import { Navigation } from "./navigation";
 import { Header } from "./header";
 import { Features } from "./features";
-// import { About } from "../landing/about";
+import { About } from "./about";
 // import { Services } from "../landing/services";
 // import { Gallery } from "../landing/gallery";
 // import { Testimonials } from "../landing/testimonials";
@@ -19,11 +19,7 @@ const landing2 = () => {
       <Navigation />
       <Header />
       <Features />
-      {/* <About />
-      <Services />
-      <Gallery />
-      <Testimonials />
-      <Team /> */}
+      <About />
     </div>
   );
 };
