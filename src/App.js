@@ -28,12 +28,13 @@ import PatientProfile from "./components/screens/patient_profile";
 import Details from "./components/screens/details";
 import Chat from "./components/screens/chat";
 import PrivateRoute from './route/PrivateRoute';
+import landing2 from "./components/screens/landing2"
 
 function App() {
   return (
     <div>
       <section>
-        <Route path="/" exact component={LandingPage} />
+        <Route path="/" exact component={landing2} />
       </section>
       <section>
         <Route path="/login" exact component={LoginPage} />
