@@ -15,7 +15,12 @@ export const scroll = new SmoothScroll('a[href*="#"]', {
 
 const landing2 = () => {
   return (
-    <div>
+    <div
+      style={{
+        background: "white",
+      }}
+      className="d-flex flex-column justify-content-center align-items-center"
+    >
       <Navigation />
       <Header />
       <Features />

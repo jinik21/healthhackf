@@ -1,8 +1,14 @@
+import { useHistory } from "react-router-dom";
+
 export const Navigation = (props) => {
+  const history = useHistory();
   return (
     <nav
       id="menu"
-      className="navbar navbar-expand-lg navbar-light bg-light imageWrapper"
+      className="navbar navbar-expand-lg navbar-light bg-light"
+      style={{
+        width: "100%",
+      }}
     >
       <div className="container">
         <div className="navbar-header">
@@ -23,10 +29,7 @@ export const Navigation = (props) => {
           </a>{" "}
         </div>
 
-        <div
-          className="collapse navbar-collapse"
-          id="bs-example-navbar-collapse-1"
-        >
+        <div className="collapse navbar-collapse" id="navbarNav">
           <ul className="nav navbar-nav navbar-right">
             <li class="nav-item active">
               <a
@@ -42,33 +45,28 @@ export const Navigation = (props) => {
               </a>
             </li>
             <li class="nav-item">
-              <a
-                href="#testimonials"
-                className="fs-2 fw-bold page-scroll text-dark"
-              >
-                Articles
-              </a>
+              <a className="fs-2 fw-bold page-scroll text-dark">Articles</a>
             </li>
             <li class="nav-item">
               <a
-                href="#testimonials"
                 className="fs-2 fw-bold page-scroll text-dark"
+                onClick={() => history.push("/register")}
               >
                 User Signup
               </a>
             </li>
             <li class="nav-item">
               <a
-                href="#testimonials"
                 className="fs-2 fw-bold page-scroll text-dark"
+                onClick={() => history.push("/registerdoc")}
               >
                 Doctor Signup
               </a>
             </li>
             <li class="nav-item">
               <a
-                href="#testimonials"
                 className="fs-2 fw-bold page-scroll text-dark"
+                onClick={() => history.push("/login")}
               >
                 Login
               </a>

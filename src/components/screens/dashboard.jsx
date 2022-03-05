@@ -17,20 +17,17 @@ const Dashboard = (props) => {
   const [sessions, setSessions] = useState(null);
   useEffect(() => {
     const func = async () => {
-      let data = await fetch(
-        "http://localhost:3001/api/usersessions",
-        {
-          method: "post",
-          headers: {
-            "Content-Type": "application/json",
-            "Access-Control-Allow-Origin": "http://127.0.0.1:3000",
-          },
-          body: JSON.stringify({
-            email: JSON.parse(localStorage.getItem("user")).email,
-            upcoming: "true",
-          }),
-        }
-      );
+      let data = await fetch("http://localhost:3001/api/usersessions", {
+        method: "post",
+        headers: {
+          "Content-Type": "application/json",
+          "Access-Control-Allow-Origin": "http://127.0.0.1:3000",
+        },
+        body: JSON.stringify({
+          email: JSON.parse(localStorage.getItem("user")).email,
+          upcoming: "true",
+        }),
+      });
 
       data = await data.json();
       var datee = new Date();
@@ -66,20 +63,17 @@ const Dashboard = (props) => {
       }
     };
     const func1 = async () => {
-      let data1 = await fetch(
-        "http://localhost:3001/api/usersessions",
-        {
-          method: "post",
-          headers: {
-            "Content-Type": "application/json",
-            "Access-Control-Allow-Origin": "http://127.0.0.1:3000",
-          },
-          body: JSON.stringify({
-            email: JSON.parse(localStorage.getItem("user")).email,
-            upcoming: "false",
-          }),
-        }
-      );
+      let data1 = await fetch("http://localhost:3001/api/usersessions", {
+        method: "post",
+        headers: {
+          "Content-Type": "application/json",
+          "Access-Control-Allow-Origin": "http://127.0.0.1:3000",
+        },
+        body: JSON.stringify({
+          email: JSON.parse(localStorage.getItem("user")).email,
+          upcoming: "false",
+        }),
+      });
 
       data1 = await data1.json();
       setSessions(data1);
@@ -200,8 +194,8 @@ const Dashboard = (props) => {
 
             <div className="row mb-3">
               <div className="col-xl-3 col-sm-6 py-2">
-                <div className="card bg-success text-white h-100">
-                  <Tilt>
+                <Tilt>
+                  <div className="card bg-success text-white h-100">
                     <div className="card-body bg-success">
                       <div className="rotate">
                         <i className="fa fa-user fa-4x"></i>
@@ -209,8 +203,8 @@ const Dashboard = (props) => {
                       <h6 className="text-uppercase">Sessions</h6>
                       <h1 className="display-4">{nusns + npsns}</h1>
                     </div>
-                  </Tilt>
-                </div>
+                  </div>
+                </Tilt>
               </div>
               <div className="col-xl-3 col-sm-6 py-2">
                 <Tilt>

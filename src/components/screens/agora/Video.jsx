@@ -200,14 +200,6 @@ const Video = ({
       >
         <p style={{ color: "#fff" }}>{message}</p>
       </div>
-      <button
-        onClick={generateReport}
-        style={{ marginTop: 20 }}
-        type="button"
-        class="btn btn-success"
-      >
-        Success
-      </button>
     </div>
   );
 };

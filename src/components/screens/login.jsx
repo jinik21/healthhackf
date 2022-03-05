@@ -1,5 +1,5 @@
 import React from "react";
-import "./dashboard.css";
+import "./login.css";
 
 class LoginPage extends React.Component {
   constructor(props) {
@@ -58,118 +58,58 @@ class LoginPage extends React.Component {
     const { data } = this.state;
     return (
       <div>
-        <section className="h-100 bg-dark">
-          <div className="container py-5 h-100">
-            <div className="row d-flex justify-content-center align-items-center h-100">
-              <div className="col">
-                <div className="card card-registration my-4">
-                  <div className="row g-0">
-                    <div className="col-xl-6 d-none d-xl-block">
-                      <img
-                        src="http://mdbootstrap.com/img/Photos/new-templates/bootstrap-registration/img4.jpg"
-                        alt="img"
-                        className="img-fluid"
-                        style={{
-                          borderTopLeftRadius: ".25rem",
-                          borderBottomLeftRadius: ".25rem",
-                        }}
-                      />
-                    </div>
-                    <div className="col-xl-6">
-                      <div className="card-body p-md-5 text-black">
-                        <h3 className="mb-5 text-uppercase">Login</h3>
-
-                        <div className="row">
-                          <div className="form-outline mb-4">
-                            <div className="form-outline">
-                              <input
-                                type="email"
-                                id="form3Example1m"
-                                className="form-control form-control-lg"
-                                name="email"
-                                value={data.email}
-                                onChange={this.onChange}
-                                required
-                              />
-                              <label
-                                className="form-label"
-                                htmlFor="form3Example1m"
-                              >
-                                Email
-                              </label>
-                            </div>
-                          </div>
-                        </div>
-
-                        <div className="form-outline mb-4">
-                          <input
-                            type="password"
-                            id="form3Example97"
-                            className="form-control form-control-lg"
-                            name="password"
-                            value={data.password}
-                            onChange={this.onChange}
-                            required
-                          />
-                          <label
-                            className="form-label"
-                            htmlFor="form3Example97"
-                          >
-                            Password
-                          </label>
-                        </div>
-                        <div className="form-check form-switch">
-                          <input
-                            className="form-check-input"
-                            type="checkbox"
-                            id="flexSwitchCheckDefault"
-                            name="doctor"
-                            value={data.doctor}
-                            onChange={this.onChangeToggle}
-                          />
-                          <label
-                            className="form-check-label"
-                            htmlFor="flexSwitchCheckDefault"
-                          >
-                            Login as Doctor
-                          </label>
-                        </div>
-                        <div className="d-flex justify-content-end pt-3">
-                          <button
-                            type="button"
-                            className="btn btn-light btn-lg b2-color"
-                            onClick={this.onReset}
-                          >
-                            Reset all
-                          </button>
-                          <button
-                            type="button"
-                            className="btn btn-warning btn-lg ms-2 b1-color"
-                            onClick={this.onSubmitSignIn}
-                          >
-                            Login
-                          </button>
-                        </div>
-                        <div className="d-flex justify-content-end pt-3">
-                          <a
-                            type="button"
-                            className="btn btn-light btn-lg b2-color"
-                            href="/registerdoc"
-                          >
-                            Register as a Doctor.
-                          </a>
-                          <a
-                            type="button"
-                            className="btn btn-light btn-lg b2-color"
-                            href="/register"
-                          >
-                            Register as a Patient.
-                          </a>
-                        </div>
-                      </div>
-                    </div>
+        <section class="vh-100">
+          <div class="container-fluid h-custom p-5">
+            <div class="row d-flex justify-content-center align-items-center h-100">
+              <div class="col-md-8 col-lg-6 col-xl-5">
+                <img
+                  src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.webp"
+                  class="img-fluid"
+                  alt="Sample image"
+                />
+              </div>
+              <div class="col-md-4 col-lg-6 col-xl-4 offset-xl-1">
+                <form>
+                  <p className="fw-bold fs-2">Login</p>
+                  {/* <!-- Email input --> */}
+                  <div class="form-outline mb-4">
+                    <label class="form-label" for="form3Example3">
+                      Email address
+                    </label>
+                    <input
+                      type="email"
+                      id="form3Example3"
+                      class="form-control form-control-lg"
+                      placeholder="Enter a valid email address"
+                    />
                   </div>
-                </div>
+
+                  {/* <!-- Password input --> */}
+                  <div class="form-outline mb-3">
+                    <label class="form-label" for="form3Example4">
+                      Password
+                    </label>
+                    <input
+                      type="password"
+                      id="form3Example4"
+                      class="form-control form-control-lg"
+                      placeholder="Enter password"
+                    />
+                  </div>
+
+                  <div class="text-center text-lg-start mt-4 pt-2">
+                    <button
+                      type="button"
+                      class="btn btn-primary btn-lg"
+                      style={{
+                        paddingLeft: "2.5rem",
+                        paddingRight: "2.5rem",
+                      }}
+                    >
+                      Login
+                    </button>
+                  </div>
+                </form>
               </div>
             </div>
           </div>
