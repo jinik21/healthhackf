@@ -31,7 +31,7 @@ class LoginPage extends React.Component {
   onSubmitSignIn = (event) => {
     console.log(this.state.data);
     event.preventDefault();
-    fetch("http://localhost:3001/api/signin", {
+    fetch("http://shrink4shrink.herokuapp.com/api/signin", {
       method: "post",
       headers: { "Content-type": "application/json" },
       body: JSON.stringify({
@@ -65,7 +65,7 @@ class LoginPage extends React.Component {
                 <img
                   src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.webp"
                   class="img-fluid"
-                  alt="Sample image"
+                  alt=""
                 />
               </div>
               <div class="col-md-4 col-lg-6 col-xl-4 offset-xl-1">
@@ -99,7 +99,8 @@ class LoginPage extends React.Component {
 
                   <div class="text-center text-lg-start mt-4 pt-2">
                     <button
-                      type="button"
+                      onSubmit={this.onSubmitSignIn}
+                      type="sumit"
                       class="btn btn-primary btn-lg"
                       style={{
                         paddingLeft: "2.5rem",
